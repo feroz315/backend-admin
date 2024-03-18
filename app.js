@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import express from "express";
 import UserModal from './Modal/scheme.js'
 import bcrypt from "bcrypt";
+import cors from "cors";
 
 
 
@@ -18,7 +19,7 @@ mongoose.connection.on("error", (err) => console.log("error mongo",err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended : true}));
-
+app.use(cors());
 
 
 
@@ -33,14 +34,16 @@ try {
     const { email,password,firstname } = req.body;
     if(!email || !password || !firstname){
         res.json({
-            message: "invaild email & password !"
+            message: "invaild email & password !",
+            data: null,
+            status: false
         })
         return
     }
 
 const emailExit = await UserModal.findOne({ email })
 if( emailExit !== null ){
-    res.json({
+    res.status(400).json({
         message: "email is already exit"
     })
     return
@@ -56,6 +59,8 @@ const respone = await UserModal.create(obj)
 console.log(respone, "respone")
 res.json({
     message : "user successfully ",
+    status : true,
+
     
 });
 
