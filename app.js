@@ -74,6 +74,47 @@ res.json({
 })
 
 
+app.post("/api/login", async(req,res) => {
+    try {
+        const { email, password } = req.body;
+        if(!email || !password){
+            res.json({
+                message: "required fields are missing!",
+                data: null,
+                status: false,
+    
+            });
+            return;
+        }
+    
+        const checkemail =  await UserModal.findOne({ email });
+        if(!checkemail){
+            res.status(400).json({
+                message: "invaild email & password"
+            });
+            return;
+        }
+    
+        const comparepass = await bcrypt.compare(password, checkemail.password);
+        if(!comparepass){
+            res.status(400).json({
+                message: "invaild email & password"
+            });
+             return;  
+        }
+        res.json({
+            message: " Succesfully Login ",
+            data: checkemail,
+            status: true,
+        });
+    
+    } catch (error) {
+        res.json({
+            message: error.message
+        })
+    }
+    
+    })
 
 
 
