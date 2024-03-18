@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 // import { products} from './data.js'
 import express from "express";
+import UserModal from './Modal/scheme.js'
+import bcrypt from "bcrypt";
+
 
 
 const app = express();
@@ -21,7 +24,7 @@ app.use(express.urlencoded({ extended : true}));
 
 app.get("/",((req,res)=> {
         res.json({
-            message: "Server is update"
+            message: "Server is change"
         })
 }))
 
@@ -34,6 +37,30 @@ try {
         })
         return
     }
+
+const emailExit = await UserModal.findOne({ email })
+if( emailExit !== null ){
+    res.json({
+        message: "email is already exit"
+    })
+    return
+}
+
+const hashPass = await bcrypt.hash(password, 10)
+const obj = {
+    ...req.body,
+    password: hashPass
+};
+
+
+
+const respone = await UserModal.create(obj)
+console.log(respone, "respone")
+    res.json({
+
+    })
+
+
 } catch (error) {
     res.json({
         message: error.message
