@@ -8,7 +8,7 @@ import bcrypt from "bcrypt";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const db = "mongodb+srv://admin:admin@crudapp.ncgm6eu.mongodb.net/";
+const db = "mongodb+srv://admin:admin@crudapp.df2etkh.mongodb.net/";
 
 
 mongoose.connect(db)
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended : true}));
 
 app.get("/",((req,res)=> {
         res.json({
-            message: "Server is change"
+            message: "Server is new change"
         })
 }))
 
@@ -52,14 +52,12 @@ const obj = {
     password: hashPass
 };
 
-
-
 const respone = await UserModal.create(obj)
 console.log(respone, "respone")
-    res.json({
-
-    })
-
+res.json({
+    message : "user successfully ",
+    
+});
 
 } catch (error) {
     res.json({
