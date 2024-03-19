@@ -4,7 +4,7 @@ import express from "express";
 import UserModal from './Modal/scheme.js'
 import bcrypt from "bcrypt";
 import cors from "cors";
-
+import jwt from "jsonwebtoken";
 
 
 const app = express();
@@ -31,12 +31,12 @@ app.get("/",((req,res)=> {
 
 app.post("/api/signup", async(req,res) => {
 try {
-    const { email,password,firstname } = req.body;
-    if(!email || !password || !firstname){
-        res.json({
+    const { email,password,firstname,lastname} = req.body;
+    if(!email || !password || !firstname || !lastname ){
+        res.status(400).json({
             message: "invaild email & password !",
             data: null,
-            status: false
+            
         })
         return
     }
@@ -57,11 +57,9 @@ const obj = {
 
 const respone = await UserModal.create(obj)
 console.log(respone, "respone")
-res.json({
-    message : "user successfully ",
-    status : true,
-
-    
+res.status(200).json({
+    message : "user successfully Signup!",
+        
 });
 
 } catch (error) {
@@ -102,12 +100,21 @@ app.post("/api/login", async(req,res) => {
             });
              return;  
         }
-        res.json({
-            message: " Succesfully Login ",
-            data: checkemail,
-            status: true,
-        });
-    
+            const obj = {
+                email: checkemail.email,
+                _id: checkemail._id,
+                firstname: checkemail.firstname,
+                lastname: checkemail.lastname,    
+            }
+
+            const token = jwt.sign(obj, "PAK")
+            res.json({
+                message: "Successfully Login",
+                data: checkemail,
+                status: true,
+                token
+            });
+   
     } catch (error) {
         res.json({
             message: error.message
@@ -117,23 +124,6 @@ app.post("/api/login", async(req,res) => {
     })
 
 
-
-// app.post("/createuser",((req,res) => {
-//     console.log("user",req.body)
-//     res.send("create user")
-// })) 
-
-// app.get("/createuser",((req,res) => {
-//         res.send("get user")
-// }))
-
-// app.put("/createuser",((req,res) => {
-//         res.send("update user")
-// })) 
-
-// app.delete("/createuser",((req,res) => {
-//     res.send("delete user")
-// })) 
 
 app.listen(PORT, ((req,res)=> {
     console.log("hi")
