@@ -5,6 +5,7 @@ import UserModal from './Modal/scheme.js'
 import bcrypt from "bcrypt";
 import cors from "cors";
 import jwt from "jsonwebtoken";
+import router from './Routes/Products.js';
 
 
 const app = express();
@@ -22,12 +23,16 @@ app.use(express.urlencoded({ extended : true}));
 app.use(cors());
 
 
-
 app.get("/",((req,res)=> {
         res.json({
             message: "Server is new change"
         })
 }))
+
+
+//middleware as router api
+app.use("/api/products",router);
+
 
 app.post("/api/signup", async(req,res) => {
 try {
