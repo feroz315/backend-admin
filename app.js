@@ -6,14 +6,16 @@ import bcrypt from "bcrypt";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import router from './Routes/Products.js';
+import { DATABASE_URL } from './DBConnect/DBConnect.js';
+
 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const db = "mongodb+srv://admin:admin@crudapp.df2etkh.mongodb.net/";
+// const db = "mongodb+srv://admin:admin@crudapp.df2etkh.mongodb.net/";
 
 
-mongoose.connect(db)
+mongoose.connect(DATABASE_URL)
 mongoose.connection.on("connected", () => console.log("mongose connect"));
 mongoose.connection.on("error", (err) => console.log("error mongo",err));
 
@@ -30,8 +32,9 @@ app.get("/",((req,res)=> {
 }))
 
 
-//middleware as router api
-app.use("/api/products",router);
+//middleware as routes api
+app.use("/api/products", router);
+
 
 
 app.post("/api/signup", async(req,res) => {
@@ -131,5 +134,5 @@ app.post("/api/login", async(req,res) => {
 
 
 app.listen(PORT, ((req,res)=> {
-    console.log("hi")
+    console.log("Server connect")
 }))

@@ -1,0 +1,1 @@
+export const DATABASE_URL = "mongodb+srv://admin:admin@crudapp.df2etkh.mongodb.net/";
