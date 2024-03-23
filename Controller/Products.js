@@ -30,14 +30,11 @@ const getAllProducts = async (req, res) => {
             res.send(filterdata);
             return;
         }
-          res.send(products);
+        //   res.send(products);
 
-          const obj = {
-            ...req.query
-          }
 
        
-        const Items = await ProductItem.create(obj)
+        const Items = await ProductItem.create(filterdata)
         console.log("success", Items)
         res.status(200).json({
             message: "Successfully Connect",
