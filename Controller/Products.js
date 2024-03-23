@@ -25,7 +25,9 @@ app.use(cors());
 const getAllProducts = async(req,res) => {
     try {
 
-        const Items = await ProductItem.create(products)
+        const obj = {...req.body}     
+        
+        const Items = await ProductItem.create(obj)
         console.log("success",Items)
         res.status(200).json({
             message : "Successfully Connect",
