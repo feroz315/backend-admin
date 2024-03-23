@@ -34,7 +34,7 @@ const getAllProducts = async (req, res) => {
 
 
        
-        const Items = await ProductItem.create(filterdata)
+        const Items = await ProductItem.create(products)
         console.log("success", Items)
         res.status(200).json({
             message: "Successfully Connect",
