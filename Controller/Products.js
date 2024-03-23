@@ -33,7 +33,7 @@ const getAllProducts = async (req, res) => {
           res.send(products);
 
 
-       
+        // await ProductItem.deleteMany();           
         const Items = await ProductItem.create(products)
         res.status(200).json({
             message: "Successfully Connect",
