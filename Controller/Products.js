@@ -30,12 +30,11 @@ const getAllProducts = async (req, res) => {
             res.send(filterdata);
             return;
         }
-        //   res.send(products);
+           res.send(products);
 
 
        
         const Items = await ProductItem.create(products)
-        console.log("success", Items)
         res.status(200).json({
             message: "Successfully Connect",
 
