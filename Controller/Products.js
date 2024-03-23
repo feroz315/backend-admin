@@ -28,7 +28,7 @@ const getAllProducts = async (req, res) => {
         if(req.query.id){
            const filterdata = products.filter((product) => product.id == req.query.id);    
             res.send(filterdata);
-            
+            return;
         }
         //    res.send(products);
 
