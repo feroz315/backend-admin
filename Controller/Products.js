@@ -24,12 +24,12 @@ app.use(cors());
 // get all products api
 const getAllProducts = async (req, res) => {
     try {
-        // console.log("all products", req.query)
-        // if(req.query.id){
-        //    const filterdata = products.filter((product) => product.id == req.query.id);    
-        //     res.send(filterdata);
-        //     return;
-        // }
+        console.log("all products", req.query)
+        if(req.query.id){
+           const filterdata = products.filter((product) => product.id == req.query.id);    
+            res.send(filterdata);
+            return;
+         }
           res.send(products);
 
 
