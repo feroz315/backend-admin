@@ -1,23 +1,23 @@
 
-import { DATABASE_URL } from '../DBConnect/DBConnect.js';
-import mongoose from 'mongoose';
+// import { DATABASE_URL } from '../DBConnect/DBConnect.js';
+// import mongoose from 'mongoose';
 import ProductItem from "../Modal/ProductScheme.js";
 import { products } from "../product.js";
-import cors from "cors";
-import express from "express";
+// import cors from "cors";
+// import express from "express";
 
 
 
-mongoose.connect(DATABASE_URL)
-mongoose.connection.on("connected", () => console.log("mongose connect"));
-mongoose.connection.on("error", (err) => console.log("error mongo", err));
+// mongoose.connect(DATABASE_URL)
+// mongoose.connection.on("connected", () => console.log("mongose connect"));
+// mongoose.connection.on("error", (err) => console.log("error mongo", err));
 
-const app = express();
+// const app = express();
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(cors());
 
 
 
@@ -52,6 +52,7 @@ const getAllProducts = async (req, res) => {
     }
 
 };
+
 
 
 
