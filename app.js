@@ -3,9 +3,8 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import express from "express";
 import cors from "cors";
-import routes from './Routes/Products.js';
+import routes from './Routes/Routes.js';
 // import { DATABASE_URL } from './DBConnect/DBConnect.js';
-
 
 
 const app = express();
@@ -24,15 +23,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 
+//middleware as routes api
+app.use("/api", routes);
+
+
 app.get("/", ((req, res) => {
     res.json({
         message: "Server is new change"
     })
 }))
-
-
-//middleware as routes api
-app.use("/api", routes);
 
 
 

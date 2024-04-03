@@ -1,5 +1,5 @@
 
-import UserModal from './Modal/scheme.js'
+import UserModal from '../Modal/scheme.js'
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -80,19 +80,7 @@ const UserLogin = async(req,res) => {
             _id: checkemail._id,
             firstname: checkemail.firstname,
             lastname: checkemail.lastname,
-        }
-
-      
-         const createtoken = jwt.sign({
-         id:"66026602f35d411fec8ac4e2",
-         email,
-         lastname,
-        
-        
-        },"jAWANPK")
-            console.log(createtoken, "token")
-
-        
+        }      
 
         const token = jwt.sign(obj, "PAK")
         res.json({
@@ -111,5 +99,5 @@ const UserLogin = async(req,res) => {
  
 export  {
     UserSignup,
-    UserLogin
+    UserLogin,
 }
