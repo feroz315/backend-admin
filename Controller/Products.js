@@ -1,6 +1,7 @@
 
 // import { DATABASE_URL } from '../DBConnect/DBConnect.js';
 // import mongoose from 'mongoose';
+import { authMiddleware } from "../Middlewares/index.js";
 import ProductItem from "../Modal/ProductScheme.js";
 import { products } from "../product.js";
 // import cors from "cors";
