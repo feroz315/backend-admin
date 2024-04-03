@@ -1,7 +1,7 @@
 import express from "express";
 const routes = express.Router();
 import { getAllProducts } from "../Controller/Products.js";
-import { UserSignup } from "../Controller/Auth.js";
+import { UserSignup,UserLogin } from "../Controller/Auth.js";
 
 
 routes.get("/products", getAllProducts);
