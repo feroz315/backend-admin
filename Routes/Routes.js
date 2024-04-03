@@ -4,9 +4,12 @@ import { getAllProducts } from "../Controller/Products.js";
 import { UserSignup,UserLogin } from "../Controller/Auth.js";
 
 
-routes.get("/api/products", getAllProducts);
-routes.post("/api/signup", UserSignup);
-routes.post("/api/login", UserLogin);
+routes.route("/products").get(getAllProducts);
+routes.route("/signup").post(UserSignup);
+routes.route("/login").post(UserLogin);
+
+// routes.post("/signup", UserSignup);
+// routes.post("/login", UserLogin);
 
 
 
