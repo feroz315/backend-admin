@@ -47,57 +47,57 @@ const UserSignup = async(req,res) => {
 
 }
 
-// const UserLogin = async(req,res) => {
-//     try {
-//         const { email, password } = req.body;
-//         if (!email || !password) {
-//             res.json({
-//                 message: "required fields are missing!",
-//                 data: null,
-//                 status: false,
+const UserLogin = async(req,res) => {
+    try {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            res.json({
+                message: "required fields are missing!",
+                data: null,
+                status: false,
 
-//             });
-//             return;
-//         }
+            });
+            return;
+        }
 
-//         const checkemail = await UserModal.findOne({ email });
-//         if (!checkemail) {
-//             res.status(400).json({
-//                 message: "invaild email & password"
-//             });
-//             return;
-//         }
+        const checkemail = await UserModal.findOne({ email });
+        if (!checkemail) {
+            res.status(400).json({
+                message: "invaild email & password"
+            });
+            return;
+        }
 
-//         const comparepass = await bcrypt.compare(password, checkemail.password);
-//         if (!comparepass) {
-//             res.status(400).json({
-//                 message: "invaild email & password"
-//             });
-//             return;
-//         }
-//         const obj = {
-//             email: checkemail.email,
-//             _id: checkemail._id,
-//             firstname: checkemail.firstname,
-//             lastname: checkemail.lastname,
-//         }      
+        const comparepass = await bcrypt.compare(password, checkemail.password);
+        if (!comparepass) {
+            res.status(400).json({
+                message: "invaild email & password"
+            });
+            return;
+        }
+        const obj = {
+            email: checkemail.email,
+            _id: checkemail._id,
+            firstname: checkemail.firstname,
+            lastname: checkemail.lastname,
+        }      
 
-//         const token = jwt.sign(obj, "PAK")
-//         res.json({
-//             message: "Successfully Login",
-//             data: checkemail,
-//             status: true,
-//             token
-//         });
+        const token = jwt.sign(obj, "PAK")
+        res.json({
+            message: "Successfully Login",
+            data: checkemail,
+            status: true,
+            token
+        });
 
-//     } catch (error) {
-//         res.json({
-//             message: error.message
-//         })
-//     }
-// }
+    } catch (error) {
+        res.json({
+            message: error.message
+        })
+    }
+}
  
 export  {
     UserSignup,
-    // UserLogin,
+    UserLogin,
 }
