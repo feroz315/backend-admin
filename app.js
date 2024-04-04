@@ -8,7 +8,7 @@ import routes from './Routes/Routes.js';
 
 
 const app = express();
-// const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 const DB_URL = process.env.DATABASE_URL;
 console.log(DB_URL);
 
@@ -30,7 +30,7 @@ app.use("/api", routes);
 
 app.get("/", ((req, res) => {
     res.json({
-        message: "Server is new change"
+        message: "Server is up"
     })
 }))
 
