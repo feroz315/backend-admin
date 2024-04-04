@@ -1,5 +1,5 @@
-// import 'dotenv/config';
-require('dotenv').config()
+ import 'dotenv/config';
+// require('dotenv').config();
 
 import mongoose from 'mongoose';
 import express from "express";
@@ -8,7 +8,7 @@ import routes from './Routes/Routes.js';
 
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.DATABASE_URL;
 console.log(DB_URL);
 
