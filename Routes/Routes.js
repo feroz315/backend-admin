@@ -6,7 +6,7 @@ import { UserSignup,UserLogin } from "../Controller/Auth.js";
 
 routes.get("/products", getAllProducts);
 routes.post("/signup", UserSignup);
-routes.post("/", UserLogin);
+routes.post("/login", UserLogin);
 
 
 
