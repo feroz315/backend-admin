@@ -24,7 +24,7 @@ app.use(cors());
 
 
 //middleware as routes api
-app.use("/api/", routes);
+app.use("/api", routes);
 
 
 
