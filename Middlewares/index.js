@@ -2,6 +2,7 @@
 import jwt from "jsonwebtoken";
 
 
+
 const authMiddleware = async(req,res,next) => {
     console.log(req.headers["authorization"]);
    try {
@@ -29,6 +30,6 @@ const authMiddleware = async(req,res,next) => {
    }
 
 
-   export { 
+ export { 
     authMiddleware,
    };

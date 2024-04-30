@@ -6,10 +6,11 @@ import { authMiddleware } from "../Middlewares/index.js";
 
 
 
+
 routes.get("/products", getAllProducts,authMiddleware);
-routes.get("/products/:id", getSingleProduct);
+routes.get("/products/:id", getSingleProduct,getSingleProduct);
 routes.post("/signup", UserSignup);
-routes.post("/login", UserLogin);
+routes.post("/login", UserLogin,);
 
 
 

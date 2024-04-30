@@ -1,0 +1,95 @@
+
+// import { products } from "../product";
+
+
+
+
+// // const singleProduct = (req,res) => {
+// // const OneItem = products.find((product) => product.id === +req.params.id ) 
+// // console.log("result", OneItem);
+// // res.send(OneItem)
+// // }
+
+// const signleProduct = async(req,res) => {
+//     try {
+//         const { id } = req.params
+//         const itemData = await  
+//     } catch (error) {
+        
+//     }
+// }
+
+
+
+
+
+// app.get("/getuser/:id", async (request, response) => {
+//    try {
+//        const { id } = request.params
+//        // const userData = await UserModel.findById(id)
+//        const userData = await UserModel.find({
+//            userName: "inno sufiyan"
+//        })
+//        response.json({ data: userData })
+//    } catch (error) {
+
+//    }
+// })
+
+// app.put("/updateuser/:id", async (request, response) => {
+//    console.log("param", request.params)
+//    console.log("body", request.body)
+
+//    const userid = request.params.id
+//    const updateUser = await UserModel.findByIdAndUpdate(userid, request.body)
+
+//    response.json({
+//        message: "USER UPDATED!"
+//    })
+// })
+
+// app.delete("/deleteuser/:id", (request, response) => {
+//    console.log("param", request.params)
+
+//    response.json({
+//        message: "USER Deleted!"
+//    })
+// })
+
+
+// const authMiddleware = (request, response, next) => {
+// }
+
+// app.get("/", (request, response) => {
+//     response.send("<h1>HELLO WORLD</h1>")
+// })
+
+// app.get("/products", authMiddleware, (request, response) => {
+//     console.log("request.query", request.query)
+//     const query = request.query
+//     if (query?.limit) {
+//         response.send(product.slice(0, query?.limit))
+//     } else {
+//         response.send(product)
+//     }
+
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    export { 
+//     singleProduct,
+//    };
