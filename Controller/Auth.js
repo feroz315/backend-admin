@@ -18,7 +18,7 @@ const UserSignup = async(req,res) => {
             return
         }
 
-        const emailExit = await UserModal.findOne({ email })
+        const emailExit = await UserModal.findOne({email})
         if (emailExit !== null) {
             res.status(400).json({
                 message: "email is already exit"
