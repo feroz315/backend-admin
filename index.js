@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 
+
 //middleware as routes api
 app.use("/api", routes);
 
